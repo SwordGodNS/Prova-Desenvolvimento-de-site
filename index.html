@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pacífico Paradise</title>
+</head>
+<body>
+    <header>
+        <h1>Pacífico Paradise</h1>
+        <p>Um lugar paradisíaco para relaxar e aproveitar a natureza exuberante.</p>
+    </header>
+
+    <section class="attraction" id="attraction1">
+        <h2>Poço Mágico</h2>
+        <img class="attraction-img" src="imagem1.jpg" alt="Imagem da Atração 1">
+        <p>Poço Mágico com vista maravilhosa para a natureza.</p>
+        <a href="mais-informacoes.html">Mais informações</a>
+    </section>
+
+    <section class="attraction" id="attraction2">
+        <h2>Buraco do Padre</h2>
+        <img class="attraction-img" src="imagem2.jpg" alt="Imagem da Atração 2">
+        <p>Lugar com vista incrível e natural, com acesso direto à praia.</p>
+        <a href="mais-informacoes.html">Mais informações</a>
+    </section>
+
+    <section class="image-gallery" id="gallery">
+        <h2>Galeria de Imagens</h2>
+        <div class="images">
+            <img src="imagem3.jpg" alt="Imagem 3" class="gallery-img" onclick="openModal('imagem3.jpg')">
+            <img src="imagem4.jpg" alt="Imagem 4" class="gallery-img" onclick="openModal('imagem4.jpg')">
+            <img src="imagem5.jpg" alt="Imagem 5" class="gallery-img" onclick="openModal('imagem5.jpg')">
+            <img src="imagem6.jpg" alt="Imagem 6" class="gallery-img" onclick="openModal('imagem6.jpg')">
+            <img src="imagem7.jpg" alt="Imagem 7" class="gallery-img" onclick="openModal('imagem7.jpg')">
+            <img src="imagem8.jpg" alt="Imagem 8" class="gallery-img" onclick="openModal('imagem8.jpg')">
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <h2>Entre em Contato</h2>
+        <form id="contact-form">
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome" name="nome" required>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="mensagem">Mensagem:</label>
+            <textarea id="mensagem" name="mensagem" required></textarea>
+
+            <button type="submit">Enviar</button>
+        </form>
+    </section>
+
+    <div id="myModal" class="modal">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <div class="modal-content">
+            <img id="modal-img" src="" alt="Imagem em destaque">
+            <span class="prev" onclick="navigate('prev')">&#10094;</span>
+            <span class="next" onclick="navigate('next')">&#10095;</span>
+        </div>
+    </div>
+
+    <script>
+        function openModal(imageSrc) {
+            const modal = document.getElementById('myModal');
+            const modalImg = document.getElementById('modal-img');
+    
+            modal.style.display = 'block';
+            modalImg.src = imageSrc;
+        }
+    
+        function closeModal() {
+            const modal = document.getElementById('myModal');
+            modal.style.display = 'none';
+        }
+    
+        closeModal(); 
+    
+        function navigate(direction) {
+            const modalImg = document.getElementById('modal-img');
+            const currentImage = modalImg.src;
+            const galleryImages = document.getElementsByClassName('gallery-img');
+            const currentIndex = Array.from(galleryImages).findIndex(img => img.src.endsWith(currentImage));
+    
+            if (direction === 'prev' && currentIndex > 0) {
+                openModal(galleryImages[currentIndex - 1].src);
+            } else if (direction === 'next' && currentIndex < galleryImages.length - 1) {
+                openModal(galleryImages[currentIndex + 1].src);
+            }
+        }
+    </script>
+</body>
+</html>
+
+
+
+
+
